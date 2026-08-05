@@ -1,0 +1,22 @@
+LISTA DE DATOS PENDIENTES PARA LA VERSIÓN OFICIAL
+
+[ ] Escudo y manual de identidad visual aprobados
+[ ] Dominio institucional definitivo
+[ ] Dirección postal completa y código postal
+[ ] Teléfono con prefijo +57
+[ ] Correo institucional y correo de notificaciones judiciales
+[ ] Horarios de atención de todas las sedes
+[ ] Relación oficial de sedes y códigos DANE
+[ ] Misión y visión vigentes del PEI
+[ ] Organigrama, directorios y entes de control
+[ ] PEI, Manual de Convivencia, SIEE y demás documentos accesibles
+[ ] Calendario escolar 2026 aprobado
+[ ] Política de tratamiento de datos aprobada
+[ ] Términos y condiciones aprobados
+[ ] Política de derechos de autor aprobada
+[ ] Procedimiento PQRSD, plazos, radicación y seguimiento
+[ ] Responsable de contenidos y responsable técnico
+[ ] Protocolo para fotos y videos de menores
+[ ] Auditoría de accesibilidad WCAG 2.1 AA
+[ ] Pruebas de seguridad, copias de respaldo y plan de continuidad
+[ ] Configuración de Google Search Console y sitemap

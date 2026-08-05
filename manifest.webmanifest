@@ -1,0 +1,9 @@
+{
+  "name": "Institución Educativa Betania",
+  "short_name": "IE Betania",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#123d2d",
+  "icons": []
+}
