@@ -8,7 +8,7 @@
 - `robots.txt`, `sitemap.xml`, metadatos SEO, datos estructurados y página 404.
 
 ## Antes de publicar oficialmente
-1. Reemplazar el escudo provisional por el oficial y validar colores/manual de identidad.
+1. Reemplazar el Escudo oficial por el oficial y validar colores/manual de identidad.
 2. Completar dirección, teléfonos, correos, horarios, responsables y redes sociales.
 3. Cargar misión, visión, historia, sedes y documentos exactamente como estén aprobados.
 4. Conectar PQRSD a un backend seguro con radicado, acuse, seguimiento, archivo, notificaciones y control de plazos.
