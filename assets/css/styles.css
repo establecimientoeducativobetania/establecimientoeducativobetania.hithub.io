@@ -37,7 +37,7 @@ button,input,select,textarea{font:inherit}
 .site-header{background:linear-gradient(115deg,var(--verde-900),var(--verde-700));color:#fff}
 .brand-row{display:grid;grid-template-columns:92px 1fr auto;align-items:center;gap:1rem;padding:1.2rem 0}
 ..brand-logo {
-    width: 110px;
+    width: 150px;
     height: auto;
     object-fit: contain;
     background: white;
