@@ -182,7 +182,7 @@ textarea{min-height:150px;resize:vertical}
 ===================================================== */
 
 .brand-logo {
-    width: 110px !important;
+    width: 150px !important;
     height: auto !important;
     max-width: none !important;
     max-height: none !important;
@@ -199,7 +199,7 @@ textarea{min-height:150px;resize:vertical}
 @media (max-width: 768px) {
 
     .brand-logo {
-        width: 150px !important;
+        width: 100px !important;
         margin-right: 15px;
     }
 
