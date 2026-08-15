@@ -37,8 +37,8 @@ button,input,select,textarea{font:inherit}
 .site-header{background:linear-gradient(115deg,var(--verde-900),var(--verde-700));color:#fff}
 .brand-row{display:grid;grid-template-columns:92px 1fr auto;align-items:center;gap:1rem;padding:1.2rem 0}
 ..brand-logo {
-    width: 105px;
-    height: 105px;
+    width: 110px;
+    height: auto;
     object-fit: contain;
     background: white;
     border-radius: 12px;
