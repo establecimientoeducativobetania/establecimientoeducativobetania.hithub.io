@@ -204,3 +204,97 @@ textarea{min-height:150px;resize:vertical}
     }
 
 }
+
+
+
+
+/* =====================================================
+   PQRSD GLOBAL - TODAS LAS PÁGINAS
+===================================================== */
+
+
+/* PQRSD destacado dentro del menú */
+
+.main-menu .pqrsd-nav-link,
+.main-menu a[href*="script.google.com/macros/s/"] {
+    background: #176b45;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-radius: 7px;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+
+/* Botón PQRSD flotante */
+
+.pqrsd-flotante {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 13px 18px;
+
+    background: #176b45;
+    color: #ffffff !important;
+
+    border-radius: 50px;
+
+    font-weight: 700;
+    font-size: 15px;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.pqrsd-flotante:hover {
+    background: #105438;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.30);
+}
+
+
+.pqrsd-flotante:focus-visible {
+    outline:
+        3px solid #ffffff;
+
+    outline-offset:
+        3px;
+}
+
+
+/* Ajuste para celulares */
+
+@media (max-width: 768px) {
+
+    .pqrsd-flotante {
+        right: 12px;
+        bottom: 12px;
+
+        padding:
+            11px 14px;
+
+        font-size:
+            14px;
+    }
+
+}

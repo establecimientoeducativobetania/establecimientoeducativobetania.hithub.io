@@ -40,3 +40,180 @@
   const tracking=document.querySelector('#tracking-form');
   if(tracking){tracking.addEventListener('submit',(e)=>{e.preventDefault();const m=document.querySelector('#tracking-message');m.classList.add('show');m.textContent='La consulta de radicados estará disponible cuando se conecte el módulo al sistema institucional.';m.focus();});}
 })();
+
+
+
+
+// =====================================================
+// ACCESO GLOBAL AL SISTEMA PQRSD
+// Se aplica automáticamente en todas las páginas
+// =====================================================
+
+function instalarAccesoPqrsd() {
+
+  const pqrsdUrl =
+    'https://script.google.com/macros/s/AKfycbwzpNYGwPuKNLlCTUc6e6iPlXWlI2WLOG08TJypL1MFpsFh1L20Q_V6AYbnDzYcBay4FQ/exec';
+
+
+  // -----------------------------------------------------
+  // 1. AGREGAR PQRSD AL MENÚ PRINCIPAL SI NO EXISTE
+  // -----------------------------------------------------
+
+  const menu =
+    document.querySelector('.main-menu');
+
+
+  if (menu) {
+
+    const enlaces =
+      Array.from(
+        menu.querySelectorAll('a')
+      );
+
+
+    const yaExiste =
+      enlaces.some(function(enlace) {
+
+        return (
+          enlace.textContent
+            .trim()
+            .toUpperCase()
+            .includes('PQRSD') ||
+
+          enlace.href === pqrsdUrl
+        );
+
+      });
+
+
+    if (!yaExiste) {
+
+      const elementoLista =
+        document.createElement('li');
+
+
+      const enlacePqrsd =
+        document.createElement('a');
+
+
+      enlacePqrsd.href =
+        pqrsdUrl;
+
+      enlacePqrsd.target =
+        '_blank';
+
+      enlacePqrsd.rel =
+        'noopener';
+
+      enlacePqrsd.className =
+        'pqrsd-nav-link';
+
+      enlacePqrsd.textContent =
+        'PQRSD';
+
+
+      elementoLista.appendChild(
+        enlacePqrsd
+      );
+
+
+      // Intentar colocarlo antes del calendario escolar.
+
+      const enlaceCalendario =
+        enlaces.find(function(enlace) {
+
+          return (
+            enlace
+              .getAttribute('href') || ''
+          )
+            .toLowerCase()
+            .includes('calendario');
+
+        });
+
+
+      if (
+        enlaceCalendario &&
+        enlaceCalendario.parentElement
+      ) {
+
+        menu.insertBefore(
+          elementoLista,
+          enlaceCalendario.parentElement
+        );
+
+      } else {
+
+        menu.appendChild(
+          elementoLista
+        );
+
+      }
+
+    }
+
+  }
+
+
+  // -----------------------------------------------------
+  // 2. CREAR BOTÓN FLOTANTE PQRSD
+  // -----------------------------------------------------
+
+  if (
+    !document.querySelector(
+      '.pqrsd-flotante'
+    )
+  ) {
+
+    const boton =
+      document.createElement('a');
+
+
+    boton.href =
+      pqrsdUrl;
+
+    boton.target =
+      '_blank';
+
+    boton.rel =
+      'noopener';
+
+    boton.className =
+      'pqrsd-flotante';
+
+    boton.setAttribute(
+      'aria-label',
+      'Radicar o consultar PQRSD'
+    );
+
+
+    boton.innerHTML =
+      '<span aria-hidden="true">✉</span>' +
+      '<span>PQRSD</span>';
+
+
+    document.body.appendChild(
+      boton
+    );
+
+  }
+
+}
+
+
+// Ejecutar cuando la página esté lista
+
+if (
+  document.readyState === 'loading'
+) {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    instalarAccesoPqrsd
+  );
+
+} else {
+
+  instalarAccesoPqrsd();
+
+}
