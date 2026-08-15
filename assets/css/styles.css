@@ -162,7 +162,7 @@ textarea{min-height:150px;resize:vertical}
 
 /* Tamaño del escudo institucional */
 .brand-logo {
-  width: 90px;
+  width: 120px;
   height: auto;
   flex-shrink: 0;
 }
