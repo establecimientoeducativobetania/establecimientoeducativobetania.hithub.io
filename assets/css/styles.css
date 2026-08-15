@@ -158,3 +158,18 @@ textarea{min-height:150px;resize:vertical}
   a{color:#000;text-decoration:none}a[href]::after{content:' (' attr(href) ')';font-size:8pt}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* Tamaño del escudo institucional */
+.brand-logo {
+  width: 90px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 72px;
+  }
+}
