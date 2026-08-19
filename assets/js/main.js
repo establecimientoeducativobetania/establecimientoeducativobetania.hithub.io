@@ -684,3 +684,135 @@ if (document.readyState === 'loading') {
   cargarDocumentosInstitucionales();
 
 }
+
+
+
+
+
+// =====================================================
+// PÁGINA GENERAL DE NOTICIAS Y ACTIVIDADES
+// =====================================================
+
+function cargarTodasLasNoticias() {
+
+  const contenedor =
+    document.getElementById('todas-las-noticias');
+
+
+  // Si no estamos en noticias.html, no hacemos nada.
+  if (!contenedor) {
+    return;
+  }
+
+
+  const noticias =
+    window.NOTICIAS_IEB || [];
+
+
+  // Si no hay noticias registradas.
+  if (noticias.length === 0) {
+
+    contenedor.innerHTML = `
+
+      <article class="card">
+
+        <span class="tag">
+          Institucional
+        </span>
+
+        <h3>
+          Próximamente
+        </h3>
+
+        <p>
+          En este espacio se publicarán las noticias,
+          actividades y acontecimientos de la
+          Institución Educativa Betania.
+        </p>
+
+      </article>
+
+    `;
+
+    return;
+
+  }
+
+
+  // Crear todas las noticias automáticamente.
+
+  contenedor.innerHTML =
+    noticias
+      .map(function(noticia) {
+
+
+        const imagen = noticia.imagen
+          ? `
+            <img
+              src="${noticia.imagen}"
+              alt="${noticia.titulo}"
+              class="noticia-imagen"
+              loading="lazy">
+          `
+          : '';
+
+
+        const enlace = noticia.enlace
+          ? `
+            <a
+              class="btn btn-outline"
+              href="${noticia.enlace}">
+              ${noticia.textoEnlace || 'Ver más'}
+            </a>
+          `
+          : '';
+
+
+        return `
+
+          <article class="card noticia-card">
+
+            ${imagen}
+
+            <span class="tag">
+              ${noticia.categoria || 'Institucional'}
+            </span>
+
+            <p class="noticia-fecha">
+              ${noticia.fechaTexto || ''}
+            </p>
+
+            <h3>
+              ${noticia.titulo}
+            </h3>
+
+            <p>
+              ${noticia.resumen}
+            </p>
+
+            ${enlace}
+
+          </article>
+
+        `;
+
+      })
+      .join('');
+
+}
+
+
+// Ejecutar después de cargar la página.
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    cargarTodasLasNoticias
+  );
+
+} else {
+
+  cargarTodasLasNoticias();
+
+}
