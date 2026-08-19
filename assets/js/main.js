@@ -325,3 +325,218 @@ if (document.readyState === 'loading') {
   cargarNoticiasInicio();
 
 }
+
+
+// =====================================================
+// DOCUMENTOS INSTITUCIONALES AUTOMÁTICOS
+// =====================================================
+
+function cargarDocumentosInstitucionales() {
+
+  const contenedor =
+    document.getElementById('documentos-institucionales');
+
+  if (!contenedor) {
+    return;
+  }
+
+  const documentos =
+    window.DOCUMENTOS_IEB || [];
+
+  if (documentos.length === 0) {
+
+    contenedor.innerHTML = `
+      <article class="card">
+        <span class="tag">Institucional</span>
+        <h3>Documentos institucionales</h3>
+        <p>
+          Próximamente se publicarán los documentos institucionales.
+        </p>
+      </article>
+    `;
+
+    return;
+  }
+
+
+  contenedor.innerHTML =
+    documentos
+      .map(function(documento) {
+
+        return `
+
+          <article class="card documento-card">
+
+            <span class="tag">
+              ${documento.categoria || 'Institucional'}
+            </span>
+
+            <h3>
+              ${documento.titulo}
+            </h3>
+
+            <p>
+              ${documento.descripcion || ''}
+            </p>
+
+            <p class="documento-anio">
+              ${documento.anio || ''}
+            </p>
+
+            <a
+              class="btn btn-outline"
+              href="${documento.archivo}"
+              target="_blank"
+              rel="noopener">
+              Consultar documento
+            </a>
+
+          </article>
+
+        `;
+
+      })
+      .join('');
+
+}
+
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    cargarDocumentosInstitucionales
+  );
+
+} else {
+
+  cargarDocumentosInstitucionales();
+
+}
+
+// =====================================================
+// DOCUMENTOS INSTITUCIONALES AUTOMÁTICOS
+// =====================================================
+
+function cargarDocumentosInstitucionales() {
+
+  const contenedor =
+    document.getElementById(
+      'documentos-institucionales'
+    );
+
+
+  // Si estamos en otra página, no hacemos nada.
+  if (!contenedor) {
+    return;
+  }
+
+
+  const documentos =
+    window.DOCUMENTOS_IEB || [];
+
+
+  // Si todavía no hay documentos registrados.
+  if (documentos.length === 0) {
+
+    contenedor.innerHTML = `
+
+      <li class="doc-item">
+
+        <div>
+
+          <strong>
+            Documentos institucionales
+          </strong>
+
+          <div class="meta">
+            Próximamente se publicarán documentos institucionales.
+          </div>
+
+        </div>
+
+      </li>
+
+    `;
+
+    return;
+
+  }
+
+
+  // Crear automáticamente cada documento.
+
+  contenedor.innerHTML =
+    documentos
+      .map(function(documento) {
+
+        return `
+
+          <li class="doc-item">
+
+            <div>
+
+              <strong>
+                ${documento.titulo}
+              </strong>
+
+              <div class="meta">
+
+                ${documento.categoria || 'Institucional'}
+
+                ${documento.anio
+                  ? ' · ' + documento.anio
+                  : ''}
+
+                · Formato PDF
+
+              </div>
+
+              ${
+                documento.descripcion
+                  ? `
+                    <div class="meta"
+                         style="margin-top:6px;">
+                      ${documento.descripcion}
+                    </div>
+                  `
+                  : ''
+              }
+
+            </div>
+
+
+            <a
+              class="btn btn-outline"
+              href="${documento.archivo}"
+              target="_blank"
+              rel="noopener">
+
+              Consultar documento
+
+            </a>
+
+          </li>
+
+        `;
+
+      })
+      .join('');
+
+}
+
+
+// Ejecutar cuando la página termine de cargar.
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    cargarDocumentosInstitucionales
+  );
+
+} else {
+
+  cargarDocumentosInstitucionales();
+
+}
