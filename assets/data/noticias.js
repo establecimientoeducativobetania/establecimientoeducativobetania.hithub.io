@@ -6,7 +6,7 @@ window.NOTICIAS_IEB = [
     categoria: "PAE",
     titulo: "Jornada pedagógica del Programa de Alimentación Escolar",
     resumen: "La Institución Educativa Betania desarrolló una jornada pedagógica en el marco del Programa de Alimentación Escolar, promoviendo hábitos de alimentación saludable, el cuidado de la salud y la formación integral de los estudiantes.",
-    imagen: "assets/img/noticias/2026/jornada-pae-29-julio-2026.jpg",
+    imagen: "assets/img/noticias/2026/jornada-pae-29-julio-2026.jpeg",
     enlace: "",
     textoEnlace: "Ver más"
   },
