@@ -935,3 +935,201 @@ if (document.readyState === 'loading') {
   corregirEnlacesPqrsd();
 
 }
+
+
+
+
+// =====================================================
+// CRONOGRAMA INSTITUCIONAL 2026
+// =====================================================
+
+function cargarCronogramaInstitucional2026() {
+
+  const contenedor =
+    document.getElementById(
+      'cronograma-institucional-2026'
+    );
+
+
+  // Si estamos en otra página, no hacer nada.
+  if (!contenedor) {
+    return;
+  }
+
+
+  const cronograma =
+    window.CRONOGRAMA_INSTITUCIONAL_2026 || [];
+
+
+  // Si no hay información registrada.
+  if (cronograma.length === 0) {
+
+    contenedor.innerHTML = `
+
+      <div class="notice">
+
+        <strong>
+          Cronograma Institucional 2026
+        </strong>
+
+        <p>
+          Actualmente no hay actividades registradas.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  // Nombre público de cada categoría.
+
+  const nombresTipos = {
+
+    academico:
+      'Académico',
+
+    institucional:
+      'Institucional',
+
+    actividad:
+      'Actividad',
+
+    comunidad:
+      'Comunidad educativa',
+
+    conmemoracion:
+      'Conmemoración',
+
+    vacaciones:
+      'Vacaciones',
+
+    festivo:
+      'Festivo'
+
+  };
+
+
+  // ===================================================
+  // CREAR LOS 12 MESES
+  // ===================================================
+
+  contenedor.innerHTML =
+    cronograma
+      .map(function(mes) {
+
+
+        const eventos =
+          mes.eventos
+            .map(function(evento) {
+
+
+              const tipo =
+                evento.tipo || 'institucional';
+
+
+              const nombreTipo =
+                nombresTipos[tipo] ||
+                'Institucional';
+
+
+              const detalle =
+                evento.detalle
+                  ? `
+                    <p class="cronograma-detalle">
+                      ${evento.detalle}
+                    </p>
+                  `
+                  : '';
+
+
+              return `
+
+                <li class="cronograma-evento">
+
+                  <div class="cronograma-evento-fecha">
+                    ${evento.fecha}
+                  </div>
+
+
+                  <div class="cronograma-evento-contenido">
+
+                    <span
+                      class="
+                        cronograma-tipo
+                        cronograma-tipo-${tipo}
+                      ">
+
+                      ${nombreTipo}
+
+                    </span>
+
+
+                    <h4>
+                      ${evento.titulo}
+                    </h4>
+
+
+                    ${detalle}
+
+                  </div>
+
+                </li>
+
+              `;
+
+            })
+            .join('');
+
+
+        return `
+
+          <article class="cronograma-mes-card">
+
+            <header class="cronograma-mes-header">
+
+              <span class="cronograma-mes-anio">
+                2026
+              </span>
+
+              <h3>
+                ${mes.mes}
+              </h3>
+
+            </header>
+
+
+            <ul class="cronograma-eventos">
+
+              ${eventos}
+
+            </ul>
+
+          </article>
+
+        `;
+
+      })
+      .join('');
+
+}
+
+
+// =====================================================
+// EJECUTAR AL CARGAR LA PÁGINA
+// =====================================================
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    cargarCronogramaInstitucional2026
+  );
+
+} else {
+
+  cargarCronogramaInstitucional2026();
+
+}

@@ -474,3 +474,363 @@ textarea{min-height:150px;resize:vertical}
     }
 
 }
+
+
+
+
+/* =====================================================
+   CALENDARIO ESCOLAR 2026
+===================================================== */
+
+.calendario-oficial-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce4df;
+    border-left: 5px solid #176b45;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+
+.calendario-oficial-info {
+    flex: 1;
+}
+
+
+.calendario-oficial-info h3 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+
+.calendario-oficial-info p {
+    margin-bottom: 0;
+    color: #52605a;
+}
+
+
+/* =====================================================
+   CRONOGRAMA INSTITUCIONAL 2026
+===================================================== */
+
+.cronograma-seccion {
+    background: #f7f9f8;
+}
+
+
+.cronograma-encabezado {
+    max-width: 900px;
+    margin-bottom: 25px;
+}
+
+
+.cronograma-encabezado .section-title {
+    margin-top: 10px;
+}
+
+
+/* =====================================================
+   LEYENDA
+===================================================== */
+
+.cronograma-leyenda {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+.cronograma-leyenda-item {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    border: 1px solid #d7dfdb;
+}
+
+
+/* =====================================================
+   GRID DE MESES
+===================================================== */
+
+.cronograma-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   TARJETA DEL MES
+===================================================== */
+
+.cronograma-mes-card {
+    background: #ffffff;
+
+    border: 1px solid #dce4df;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+.cronograma-mes-header {
+    background: #123d2d;
+
+    color: #ffffff;
+
+    padding: 17px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cronograma-mes-header h3 {
+    color: #ffffff;
+    margin: 0;
+
+    font-size: 1.25rem;
+}
+
+
+.cronograma-mes-anio {
+    font-size: 0.76rem;
+
+    padding: 4px 8px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.16);
+}
+
+
+/* =====================================================
+   EVENTOS
+===================================================== */
+
+.cronograma-eventos {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+.cronograma-evento {
+    display: grid;
+
+    grid-template-columns:
+        105px 1fr;
+
+    gap: 14px;
+
+    padding: 16px 18px;
+
+    border-bottom:
+        1px solid #e6ebe8;
+}
+
+
+.cronograma-evento:last-child {
+    border-bottom: none;
+}
+
+
+.cronograma-evento-fecha {
+    font-size: 0.86rem;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    color: #123d2d;
+}
+
+
+.cronograma-evento-contenido h4 {
+    margin:
+        6px 0 0 0;
+
+    font-size: 0.98rem;
+
+    line-height: 1.35;
+
+    color: #1f2925;
+}
+
+
+.cronograma-detalle {
+    margin:
+        6px 0 0 0;
+
+    font-size: 0.85rem;
+
+    line-height: 1.45;
+
+    color: #66736d;
+}
+
+
+/* =====================================================
+   ETIQUETAS POR TIPO DE EVENTO
+===================================================== */
+
+.cronograma-tipo {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 15px;
+
+    font-size: 0.70rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+}
+
+
+/* ACADÉMICO */
+
+.cronograma-tipo-academico,
+.tipo-academico {
+    background: #e3edf9;
+    color: #174a7e;
+}
+
+
+/* INSTITUCIONAL */
+
+.cronograma-tipo-institucional,
+.tipo-institucional {
+    background: #e2f1e9;
+    color: #176b45;
+}
+
+
+/* ACTIVIDADES */
+
+.cronograma-tipo-actividad,
+.tipo-actividad {
+    background: #f3e9fa;
+    color: #6a3285;
+}
+
+
+/* COMUNIDAD EDUCATIVA */
+
+.cronograma-tipo-comunidad,
+.tipo-comunidad {
+    background: #e5f2f4;
+    color: #24636c;
+}
+
+
+/* CONMEMORACIONES */
+
+.cronograma-tipo-conmemoracion,
+.tipo-conmemoracion {
+    background: #fff0dc;
+    color: #8a5518;
+}
+
+
+/* VACACIONES */
+
+.cronograma-tipo-vacaciones,
+.tipo-vacaciones {
+    background: #fff6c9;
+    color: #705d00;
+}
+
+
+/* FESTIVOS */
+
+.cronograma-tipo-festivo,
+.tipo-festivo {
+    background: #fbe5e5;
+    color: #a32929;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .cronograma-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .calendario-oficial-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .cronograma-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .cronograma-evento {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+
+    .cronograma-evento-fecha {
+        font-size: 0.82rem;
+    }
+
+
+    .cronograma-leyenda {
+        gap: 7px;
+    }
+
+}
