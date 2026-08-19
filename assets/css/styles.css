@@ -330,3 +330,57 @@ textarea{min-height:150px;resize:vertical}
     }
 
 }
+
+
+/* =====================================================
+   ORGANIZACIÓN DE DOCUMENTOS INSTITUCIONALES
+===================================================== */
+
+.grupo-documentos {
+    margin-top: 32px;
+    margin-bottom: 38px;
+}
+
+
+.titulo-categoria-documentos {
+    color: #176b45;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #176b45;
+}
+
+
+.documento-info {
+    flex: 1;
+}
+
+
+.descripcion-documento {
+    margin-top: 7px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #5f6b66;
+}
+
+
+.documento-disponible {
+    border-left: 4px solid #176b45;
+}
+
+
+.documento-pendiente {
+    border-left: 4px solid #b7b7b7;
+    opacity: 0.88;
+}
+
+
+.status-pending {
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: #f2f2f2;
+    color: #666666;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
