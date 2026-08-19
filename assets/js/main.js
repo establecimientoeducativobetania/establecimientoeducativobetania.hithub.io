@@ -49,156 +49,78 @@
 // Se aplica automáticamente en todas las páginas
 // =====================================================
 
+
+
+
+// =====================================================
+// BOTÓN FLOTANTE PQRSD
+// =====================================================
+
 function instalarAccesoPqrsd() {
 
   const pqrsdUrl =
     'https://script.google.com/macros/s/AKfycbwzpNYGwPuKNLlCTUc6e6iPlXWlI2WLOG08TJypL1MFpsFh1L20Q_V6AYbnDzYcBay4FQ/exec';
 
 
-  // -----------------------------------------------------
-  // 1. AGREGAR PQRSD AL MENÚ PRINCIPAL SI NO EXISTE
-  // -----------------------------------------------------
-
-  const menu =
-    document.querySelector('.main-menu');
-
-
-  if (menu) {
-
-    const enlaces =
-      Array.from(
-        menu.querySelectorAll('a')
-      );
-
-
-    const yaExiste =
-      enlaces.some(function(enlace) {
-
-        return (
-          enlace.textContent
-            .trim()
-            .toUpperCase()
-            .includes('PQRSD') ||
-
-          enlace.href === pqrsdUrl
-        );
-
-      });
-
-
-    if (!yaExiste) {
-
-      const elementoLista =
-        document.createElement('li');
-
-
-      const enlacePqrsd =
-        document.createElement('a');
-
-
-      enlacePqrsd.href =
-        pqrsdUrl;
-
-      enlacePqrsd.target =
-        '_blank';
-
-      enlacePqrsd.rel =
-        'noopener';
-
-      enlacePqrsd.className =
-        'pqrsd-nav-link';
-
-      enlacePqrsd.textContent =
-        'PQRSD';
-
-
-      elementoLista.appendChild(
-        enlacePqrsd
-      );
-
-
-      // Intentar colocarlo antes del calendario escolar.
-
-      const enlaceCalendario =
-        enlaces.find(function(enlace) {
-
-          return (
-            enlace
-              .getAttribute('href') || ''
-          )
-            .toLowerCase()
-            .includes('calendario');
-
-        });
-
-
-      if (
-        enlaceCalendario &&
-        enlaceCalendario.parentElement
-      ) {
-
-        menu.insertBefore(
-          elementoLista,
-          enlaceCalendario.parentElement
-        );
-
-      } else {
-
-        menu.appendChild(
-          elementoLista
-        );
-
-      }
-
-    }
-
+  // Evitar crear dos botones flotantes
+  if (document.querySelector('.pqrsd-flotante')) {
+    return;
   }
 
 
-  // -----------------------------------------------------
-  // 2. CREAR BOTÓN FLOTANTE PQRSD
-  // -----------------------------------------------------
-
-  if (
-    !document.querySelector(
-      '.pqrsd-flotante'
-    )
-  ) {
-
-    const boton =
-      document.createElement('a');
+  const boton =
+    document.createElement('a');
 
 
-    boton.href =
-      pqrsdUrl;
-
-    boton.target =
-      '_blank';
-
-    boton.rel =
-      'noopener';
-
-    boton.className =
-      'pqrsd-flotante';
-
-    boton.setAttribute(
-      'aria-label',
-      'Radicar o consultar PQRSD'
-    );
+  boton.className =
+    'pqrsd-flotante';
 
 
-    boton.innerHTML =
-      '<span aria-hidden="true">✉</span>' +
-      '<span>PQRSD</span>';
+  boton.href =
+    pqrsdUrl;
 
 
-    document.body.appendChild(
-      boton
-    );
+  boton.target =
+    '_blank';
 
-  }
+
+  boton.rel =
+    'noopener';
+
+
+  boton.setAttribute(
+    'aria-label',
+    'Radicar o consultar PQRSD'
+  );
+
+
+  boton.textContent =
+    'PQRSD';
+
+
+  document.body.appendChild(
+    boton
+  );
 
 }
+
+
+// Ejecutar al cargar la página
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    instalarAccesoPqrsd
+  );
+
+} else {
+
+  instalarAccesoPqrsd();
+
+}
+
+
 
 
 // Ejecutar cuando la página esté lista
@@ -956,6 +878,46 @@ function corregirEnlacesPqrsd() {
     }
 
   });
+
+
+// Eliminar posibles PQRSD duplicados del menú principal
+
+const menuPrincipal =
+  document.getElementById('main-menu');
+
+if (menuPrincipal) {
+
+  const accesosPqrsd =
+    Array.from(
+      menuPrincipal.querySelectorAll('a')
+    ).filter(function(enlace) {
+
+      return enlace.textContent
+        .trim()
+        .toLowerCase()
+        .includes('radicar o consultar pqrsd');
+
+    });
+
+
+  // Conservar solamente el primero
+
+  accesosPqrsd
+    .slice(1)
+    .forEach(function(enlace) {
+
+      const elementoLista =
+        enlace.closest('li');
+
+      if (elementoLista) {
+        elementoLista.remove();
+      }
+
+    });
+
+}
+
+
 
 }
 
