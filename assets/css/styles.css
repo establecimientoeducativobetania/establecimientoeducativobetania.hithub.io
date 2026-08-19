@@ -403,3 +403,74 @@ textarea{min-height:150px;resize:vertical}
 #todas-las-noticias {
     margin-top: 10px;
 }
+
+
+
+
+/* =====================================================
+   BOTÓN FLOTANTE SINAÍ - SOFTWARE DE NOTAS
+===================================================== */
+
+.sinai-flotante {
+    position: fixed;
+    right: 20px;
+    bottom: 92px;
+    z-index: 9998;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 16px;
+
+    background: #ffffff;
+    color: #123d2d;
+
+    border: 2px solid #176b45;
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.sinai-flotante:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.24);
+}
+
+
+.sinai-flotante-icono {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
+
+/* CELULARES */
+
+@media (max-width: 768px) {
+
+    .sinai-flotante {
+        right: 12px;
+        bottom: 88px;
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .sinai-flotante-icono {
+        width: 24px;
+        height: 24px;
+    }
+
+}

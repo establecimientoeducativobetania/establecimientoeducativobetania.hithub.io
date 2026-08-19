@@ -833,3 +833,79 @@ if (document.readyState === 'loading') {
   cargarTodasLasNoticias();
 
 }
+
+
+// =====================================================
+// BOTÓN FLOTANTE - SOFTWARE INSTITUCIONAL DE NOTAS SINAÍ
+// =====================================================
+
+function instalarAccesoSinai() {
+
+  // Evitar que el botón se cree dos veces
+  if (document.querySelector('.sinai-flotante')) {
+    return;
+  }
+
+  const sinaiUrl =
+    'https://iebetania.sinai.net.co/Web/Default.aspx?ReturnUrl=%2fDocente%2fDefault.aspx';
+
+
+  const botonSinai =
+    document.createElement('a');
+
+
+  botonSinai.className =
+    'sinai-flotante';
+
+
+  botonSinai.href =
+    sinaiUrl;
+
+
+  botonSinai.target =
+    '_blank';
+
+
+  botonSinai.rel =
+    'noopener';
+
+
+  botonSinai.setAttribute(
+    'aria-label',
+    'Ingresar al Software Institucional de Notas SINAÍ'
+  );
+
+
+  botonSinai.innerHTML = `
+    <img
+      src="assets/img/sinai.png"
+      alt=""
+      class="sinai-flotante-icono">
+
+    <span>
+      SINAÍ · Notas
+    </span>
+  `;
+
+
+  document.body.appendChild(
+    botonSinai
+  );
+
+}
+
+
+// Ejecutar al cargar la página
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    instalarAccesoSinai
+  );
+
+} else {
+
+  instalarAccesoSinai();
+
+}
