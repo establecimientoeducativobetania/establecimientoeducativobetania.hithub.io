@@ -217,3 +217,111 @@ if (
   instalarAccesoPqrsd();
 
 }
+
+
+// =====================================================
+// MOSTRAR NOTICIAS AUTOMÁTICAMENTE EN INICIO
+// =====================================================
+
+function cargarNoticiasInicio() {
+
+  const contenedor =
+    document.getElementById('noticias-inicio');
+
+  if (!contenedor) {
+    return;
+  }
+
+  const noticias =
+    window.NOTICIAS_IEB || [];
+
+  if (noticias.length === 0) {
+
+    contenedor.innerHTML = `
+      <article class="card">
+        <span class="tag">Institucional</span>
+        <h3>Próximamente</h3>
+        <p>
+          En este espacio se publicarán las principales
+          noticias y actividades de la Institución Educativa Betania.
+        </p>
+      </article>
+    `;
+
+    return;
+  }
+
+  const noticiasRecientes =
+    noticias.slice(0, 3);
+
+  contenedor.innerHTML =
+    noticiasRecientes
+      .map(function(noticia) {
+
+        const imagen =
+          noticia.imagen
+            ? `
+              <img
+                src="${noticia.imagen}"
+                alt="${noticia.titulo}"
+                class="noticia-imagen"
+                loading="lazy">
+            `
+            : '';
+
+        const enlace =
+          noticia.enlace
+            ? `
+              <a
+                class="btn btn-outline"
+                href="${noticia.enlace}">
+                ${noticia.textoEnlace || 'Ver más'}
+              </a>
+            `
+            : '';
+
+        return `
+
+          <article class="card noticia-card">
+
+            ${imagen}
+
+            <span class="tag">
+              ${noticia.categoria || 'Institucional'}
+            </span>
+
+            <p class="noticia-fecha">
+              ${noticia.fechaTexto || ''}
+            </p>
+
+            <h3>
+              ${noticia.titulo}
+            </h3>
+
+            <p>
+              ${noticia.resumen}
+            </p>
+
+            ${enlace}
+
+          </article>
+
+        `;
+
+      })
+      .join('');
+
+}
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    cargarNoticiasInicio
+  );
+
+} else {
+
+  cargarNoticiasInicio();
+
+}
