@@ -311,6 +311,23 @@ function cargarNoticiasInicio() {
       })
       .join('');
 
+
+      // Crear automáticamente el botón "Ver todas las noticias"
+if (!document.querySelector('.acciones-noticias')) {
+
+  contenedor.insertAdjacentHTML(
+    'afterend',
+    `
+      <div class="acciones-noticias">
+        <a class="btn btn-primary" href="noticias.html">
+          Ver todas las noticias
+        </a>
+      </div>
+    `
+  );
+
+}
+
 }
 
 if (document.readyState === 'loading') {
