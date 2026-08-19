@@ -334,69 +334,213 @@ if (document.readyState === 'loading') {
 function cargarDocumentosInstitucionales() {
 
   const contenedor =
-    document.getElementById('documentos-institucionales');
+    document.getElementById(
+      'documentos-institucionales'
+    );
+
+
+  // Si estamos en otra página, no hacer nada.
 
   if (!contenedor) {
     return;
   }
 
+
   const documentos =
     window.DOCUMENTOS_IEB || [];
+
 
   if (documentos.length === 0) {
 
     contenedor.innerHTML = `
-      <article class="card">
-        <span class="tag">Institucional</span>
-        <h3>Documentos institucionales</h3>
-        <p>
-          Próximamente se publicarán los documentos institucionales.
-        </p>
-      </article>
+
+      <div class="notice">
+
+        No hay documentos institucionales
+        registrados actualmente.
+
+      </div>
+
     `;
 
     return;
+
   }
 
 
-  contenedor.innerHTML =
-    documentos
-      .map(function(documento) {
+  // =====================================================
+  // ORDEN EN QUE APARECERÁN LAS CATEGORÍAS
+  // =====================================================
 
-        return `
+  const categorias = [
 
-          <article class="card documento-card">
+    "INSTITUCIONAL",
 
-            <span class="tag">
-              ${documento.categoria || 'Institucional'}
-            </span>
+    "ACADÉMICO",
 
-            <h3>
-              ${documento.titulo}
-            </h3>
+    "PROTECCIÓN Y SEGURIDAD",
 
-            <p>
-              ${documento.descripcion || ''}
-            </p>
+    "GESTIÓN DOCUMENTAL",
 
-            <p class="documento-anio">
-              ${documento.anio || ''}
-            </p>
+    "GESTIÓN Y TRANSPARENCIA"
+
+  ];
+
+
+  let contenido = '';
+
+
+  categorias.forEach(function(categoria) {
+
+
+    const documentosCategoria =
+      documentos.filter(function(documento) {
+
+        return documento.categoria === categoria;
+
+      });
+
+
+    if (documentosCategoria.length === 0) {
+      return;
+    }
+
+
+    contenido += `
+
+      <section class="grupo-documentos">
+
+        <h3 class="titulo-categoria-documentos">
+          ${categoria}
+        </h3>
+
+        <ul class="doc-list">
+
+    `;
+
+
+    documentosCategoria.forEach(function(documento) {
+
+
+      // ===============================================
+      // DOCUMENTO PUBLICADO
+      // ===============================================
+
+      if (
+        documento.disponible &&
+        documento.archivo
+      ) {
+
+        contenido += `
+
+          <li class="doc-item documento-disponible">
+
+            <div class="documento-info">
+
+              <strong>
+                ${documento.titulo}
+              </strong>
+
+              <div class="meta">
+
+                Documento publicado
+
+                ${
+                  documento.anio
+                    ? ' · ' + documento.anio
+                    : ''
+                }
+
+                · Formato PDF
+
+              </div>
+
+
+              ${
+                documento.descripcion
+                  ? `
+                    <div class="descripcion-documento">
+                      ${documento.descripcion}
+                    </div>
+                  `
+                  : ''
+              }
+
+            </div>
+
 
             <a
               class="btn btn-outline"
               href="${documento.archivo}"
               target="_blank"
               rel="noopener">
+
               Consultar documento
+
             </a>
 
-          </article>
+          </li>
 
         `;
 
-      })
-      .join('');
+      }
+
+
+      // ===============================================
+      // DOCUMENTO PENDIENTE
+      // ===============================================
+
+      else {
+
+        contenido += `
+
+          <li class="doc-item documento-pendiente">
+
+            <div class="documento-info">
+
+              <strong>
+                ${documento.titulo}
+              </strong>
+
+              <div class="meta">
+
+                ${
+                  documento.descripcion || ''
+                }
+
+              </div>
+
+            </div>
+
+
+            <span class="status status-pending">
+              Pendiente de publicación
+            </span>
+
+          </li>
+
+        `;
+
+      }
+
+
+    });
+
+
+    contenido += `
+
+        </ul>
+
+      </section>
+
+    `;
+
+
+  });
+
+
+  contenedor.innerHTML =
+    contenido;
 
 }
 
