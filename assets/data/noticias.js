@@ -8,7 +8,7 @@ window.NOTICIAS_IEB = [
   categoria: "Actividad institucional",
   titulo: "Actividad de la Institución Educativa Betania",
   resumen: "La comunidad educativa participó en una actividad orientada al fortalecimiento de los procesos institucionales y la formación integral de los estudiantes.",
-  imagen: "assets/img/noticias/2026/jornada-pae-01.jpg",
+  imagen: "assets/img/noticias/2026/jornada-pae-01.jpeg",
   enlace: "",
   textoEnlace: "Ver más"
 },
