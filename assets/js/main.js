@@ -909,3 +909,67 @@ if (document.readyState === 'loading') {
   instalarAccesoSinai();
 
 }
+
+
+
+// =====================================================
+// CORREGIR TODOS LOS ENLACES ANTIGUOS DE PQRS
+// =====================================================
+
+function corregirEnlacesPqrsd() {
+
+  const pqrsdUrl =
+    'https://script.google.com/macros/s/AKfycbwzpNYGwPuKNLlCTUc6e6iPlXWlI2WLOG08TJypL1MFpsFh1L20Q_V6AYbnDzYcBay4FQ/exec';
+
+
+  // Buscar todos los enlaces de la página
+  const enlaces = document.querySelectorAll('a');
+
+
+  enlaces.forEach(function(enlace) {
+
+    const href =
+      enlace.getAttribute('href') || '';
+
+    const texto =
+      enlace.textContent.trim().toLowerCase();
+
+
+    // Detectar enlaces antiguos al PQRS de muestra
+    if (
+      href === 'pqrs.html' ||
+      href.endsWith('/pqrs.html') ||
+      texto === 'pqrs' ||
+      texto === 'pqrsd' ||
+      texto === 'radicar pqrsd'
+    ) {
+
+      enlace.href = pqrsdUrl;
+
+      enlace.textContent =
+        'Radicar o consultar PQRSD';
+
+      enlace.target = '_blank';
+
+      enlace.rel = 'noopener';
+
+    }
+
+  });
+
+}
+
+
+// Ejecutar automáticamente
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    corregirEnlacesPqrsd
+  );
+
+} else {
+
+  corregirEnlacesPqrsd();
+
+}
