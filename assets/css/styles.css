@@ -834,3 +834,195 @@ textarea{min-height:150px;resize:vertical}
     }
 
 }
+
+
+
+
+/* =====================================================
+   VISOR AMPLIADO DE FOTOGRAFÍAS DE NOTICIAS
+===================================================== */
+
+
+/* Indicar visualmente que la foto se puede ampliar */
+
+.noticia-imagen {
+    cursor: zoom-in;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.noticia-imagen:hover {
+    transform: scale(1.015);
+    opacity: 0.92;
+}
+
+
+/* Fondo oscuro */
+
+.visor-noticias {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0, 0, 0, 0.88);
+}
+
+
+/* Mostrar */
+
+.visor-noticias.activo {
+    display: flex;
+}
+
+
+/* Contenedor */
+
+.visor-noticias-contenido {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: auto;
+    max-width: 95vw;
+
+    max-height: 94vh;
+}
+
+
+/* Fotografía completa */
+
+.visor-noticias-imagen {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 92vw;
+    max-height: 82vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0, 0, 0, 0.45);
+}
+
+
+/* Botón cerrar */
+
+.visor-noticias-cerrar {
+    position: absolute;
+
+    top: -18px;
+    right: -18px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #123d2d;
+
+    font-size: 30px;
+    line-height: 1;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
+}
+
+
+.visor-noticias-cerrar:hover {
+    background: #eeeeee;
+}
+
+
+/* Título de la noticia debajo */
+
+.visor-noticias-pie {
+    width: 100%;
+
+    padding-top: 12px;
+
+    text-align: center;
+}
+
+
+.visor-noticias-titulo {
+    color: #ffffff;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* Evitar desplazamiento al abrir */
+
+body.visor-abierto {
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   CELULARES
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .visor-noticias {
+        padding: 15px;
+    }
+
+
+    .visor-noticias-imagen {
+        max-width: 96vw;
+        max-height: 78vh;
+    }
+
+
+    .visor-noticias-cerrar {
+        top: -12px;
+        right: -5px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 27px;
+    }
+
+
+    .visor-noticias-titulo {
+        font-size: 0.9rem;
+    }
+
+}

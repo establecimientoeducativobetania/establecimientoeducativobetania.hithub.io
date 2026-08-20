@@ -1133,3 +1133,195 @@ if (document.readyState === 'loading') {
   cargarCronogramaInstitucional2026();
 
 }
+
+
+
+
+// =====================================================
+// VISOR DE IMÁGENES PARA NOTICIAS
+// =====================================================
+
+function instalarVisorNoticias() {
+
+  // Crear el visor una sola vez
+  if (!document.getElementById('visor-noticias')) {
+
+    const visor = document.createElement('div');
+
+    visor.id = 'visor-noticias';
+    visor.className = 'visor-noticias';
+    visor.setAttribute('aria-hidden', 'true');
+
+    visor.innerHTML = `
+
+      <div class="visor-noticias-contenido">
+
+        <button
+          class="visor-noticias-cerrar"
+          type="button"
+          aria-label="Cerrar imagen">
+          ×
+        </button>
+
+        <img
+          class="visor-noticias-imagen"
+          src=""
+          alt="">
+
+        <div class="visor-noticias-pie">
+          <span class="visor-noticias-titulo"></span>
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(visor);
+  }
+
+
+  const visor =
+    document.getElementById('visor-noticias');
+
+  const imagenGrande =
+    visor.querySelector('.visor-noticias-imagen');
+
+  const titulo =
+    visor.querySelector('.visor-noticias-titulo');
+
+  const botonCerrar =
+    visor.querySelector('.visor-noticias-cerrar');
+
+
+  // ===================================================
+  // ABRIR AL HACER CLIC EN UNA FOTO DE NOTICIA
+  // ===================================================
+
+  document.addEventListener('click', function(evento) {
+
+    const imagen =
+      evento.target.closest('.noticia-imagen');
+
+    if (!imagen) {
+      return;
+    }
+
+
+    imagenGrande.src =
+      imagen.src;
+
+    imagenGrande.alt =
+      imagen.alt || 'Imagen de noticia';
+
+
+    // Buscar el título de la noticia correspondiente
+
+    const tarjeta =
+      imagen.closest('.noticia-card');
+
+    const tituloNoticia =
+      tarjeta
+        ? tarjeta.querySelector('h3')
+        : null;
+
+
+    titulo.textContent =
+      tituloNoticia
+        ? tituloNoticia.textContent
+        : 'Institución Educativa Betania';
+
+
+    visor.classList.add('activo');
+
+    visor.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+
+    // Evitar desplazamiento de la página
+    document.body.classList.add(
+      'visor-abierto'
+    );
+
+  });
+
+
+  // ===================================================
+  // CERRAR VISOR
+  // ===================================================
+
+  function cerrarVisorNoticias() {
+
+    visor.classList.remove('activo');
+
+    visor.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    imagenGrande.src = '';
+
+    document.body.classList.remove(
+      'visor-abierto'
+    );
+
+  }
+
+
+  // Botón X
+
+  botonCerrar.addEventListener(
+    'click',
+    cerrarVisorNoticias
+  );
+
+
+  // Clic fuera de la fotografía
+
+  visor.addEventListener('click', function(evento) {
+
+    if (evento.target === visor) {
+
+      cerrarVisorNoticias();
+
+    }
+
+  });
+
+
+  // Tecla ESC
+
+  document.addEventListener(
+    'keydown',
+    function(evento) {
+
+      if (
+        evento.key === 'Escape' &&
+        visor.classList.contains('activo')
+      ) {
+
+        cerrarVisorNoticias();
+
+      }
+
+    }
+  );
+
+}
+
+
+// Ejecutar automáticamente
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    instalarVisorNoticias
+  );
+
+} else {
+
+  instalarVisorNoticias();
+
+}
