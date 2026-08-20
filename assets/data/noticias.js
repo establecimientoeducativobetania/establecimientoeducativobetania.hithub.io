@@ -1,5 +1,20 @@
 window.NOTICIAS_IEB = [
 
+
+{
+  fecha: "2026-09-21",
+  fechaTexto: "21 al 25 de septiembre de 2026",
+  categoria: "Semana Cultural",
+  titulo: "Semana Cultural 2026: Arte, Familia y Sociedad",
+  resumen: "La Institución Educativa Betania realizará del 21 al 25 de septiembre su Semana Cultural 2026, un espacio de encuentro, participación e integración de la comunidad educativa. Bajo los ejes temáticos Arte, Familia y Sociedad, se desarrollarán actividades culturales, artísticas, deportivas y de convivencia que fortalecerán la identidad institucional, los talentos de los estudiantes y los vínculos entre la escuela, la familia y la comunidad.",
+  imagen: "assets/img/noticias/2026/semana-cultural-2026.png",
+  enlace: "",
+  textoEnlace: "Ver más"
+},
+
+
+
+
   {
     fecha: "2026-07-29",
     fechaTexto: "29 de julio de 2026",
