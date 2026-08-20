@@ -1325,3 +1325,61 @@ if (document.readyState === 'loading') {
   instalarVisorNoticias();
 
 }
+
+
+
+// =====================================================
+// FACEBOOK OFICIAL - INSTITUCIÓN EDUCATIVA BETANIA
+// =====================================================
+
+function configurarFacebookInstitucional() {
+
+  const facebookUrl =
+    'https://www.facebook.com/institucioneducativabetania.pueblonuevo';
+
+
+  // Buscar los enlaces de Facebook del sitio
+  const enlacesFacebook =
+    document.querySelectorAll('.socials a');
+
+
+  enlacesFacebook.forEach(function(enlace) {
+
+    const texto =
+      enlace.textContent.trim().toLowerCase();
+
+
+    if (texto === 'facebook') {
+
+      enlace.href = facebookUrl;
+
+      enlace.target = '_blank';
+
+      enlace.rel = 'noopener noreferrer';
+
+      enlace.setAttribute(
+        'aria-label',
+        'Facebook oficial de la Institución Educativa Betania'
+      );
+
+    }
+
+  });
+
+}
+
+
+// Ejecutar automáticamente
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    configurarFacebookInstitucional
+  );
+
+} else {
+
+  configurarFacebookInstitucional();
+
+}
