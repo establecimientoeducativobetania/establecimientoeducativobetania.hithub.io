@@ -14,6 +14,19 @@ window.NOTICIAS_IEB = [
 
 
 
+  {
+  fecha: "2026-08-21",
+  fechaTexto: "21 de agosto de 2026",
+  categoria: "Juventud y participación",
+  titulo: "Desafío Semana de las Juventudes 2026",
+  resumen: "Estudiantes de la Institución Educativa Betania participaron el 21 de agosto de 2026 en el Desafío de la Semana de las Juventudes, una jornada dirigida a jóvenes entre los 14 y 28 años. La actividad promovió la integración, la participación juvenil, el trabajo en equipo, la recreación y el fortalecimiento de habilidades a través de diferentes desafíos y experiencias compartidas.",
+  imagen: "assets/img/noticias/2026/desafio-semana-juventudes.jpeg",
+  enlace: "",
+  textoEnlace: "Ver más"
+},
+
+
+
 
   {
     fecha: "2026-07-29",
